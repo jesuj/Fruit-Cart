@@ -1,10 +1,10 @@
-class State{
+class State {
     cart = {}
     KEY = 'cart';
-    
+
     static instance;
 
-    static getInstance(){
+    static getInstance() {
         if (this.instance) {
             return this.instance;
         }
@@ -12,13 +12,49 @@ class State{
         return this.instance;
     }
 
-    constructor(tipo){}
-    
-    add(){}
-    increment(){}
-    decrement(){}
-    total(){}
-    remove(){}
+    constructor() { 
+        const key = localStorage.getItem(this.KEY)
+        if (key) {
+            this.cart = JSON.parse(localStorage.getItem(this.KEY))
+        }
+    }
+
+    get cartObject() {
+        return Object.values(this.cart)
+    }
+
+    add(product) {
+        const { id, name, qty, price } = product
+        if (this.cart.hasOwnProperty(id)) {
+            product.qty = this.cart[id].qty + 1;
+        }
+        this.cart[id] = product
+    }
+
+    increment(id) {
+        const product = this.cart[id]
+        product.qty++;
+        this.cart[id] = { ...product }
+    }
+
+    decrement(id) {
+        const product = this.cart[id]
+        product.qty--;
+        if (product.qty !== 0) {
+            this.cart[id] = { ...product }
+        } else {
+            delete this.cart[id]
+        }
+    }
+    total() {
+        const qtyTotal = this.cartObject.reduce((acc, { qty }) => acc + qty, 0)
+        const total = this.cartObject.reduce((acc, { qty, price }) => acc + (qty * price), 0)
+        return [qtyTotal, total]
+    }
+
+    saveLocalStorage(){
+        localStorage.setItem(this.KEY, JSON.stringify(this.cart))
+    }
 }
 
 export default State.getInstance();
