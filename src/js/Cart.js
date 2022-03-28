@@ -45,6 +45,7 @@ export class Cart extends Component {
         btnClear.addEventListener('click', (_)=>{
             this.root.innerHTML='';
             CartState.remove();
+            this.Total.render()
         })
     }
 }
