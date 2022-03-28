@@ -51,7 +51,7 @@
     </div>
   </div>
   <template id="template-product">
-    <div class="bg-primary-600 rounded-lg group">
+    <div class="relative bg-primary-600 rounded-lg group">
       <img alt="Coco" class="w-9/12 sm:w-full mx-auto transform transition-transform duration-300 group-hover:scale-110" />
       <div class="p-5 bg-primary-200 rounded-b-md">
         <div class="flex flex-row justify-between items-center">
@@ -68,6 +68,9 @@
           Comprar
         </button>
       </div>
+      <button id="redigirCarrito" class="absolute top-2 right-2 rounded-full bg-primary-700 text-white  p-2 transition-all duration-500 hover:bg-primary-800 hover:-translate-y-1 sm:hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+      </button>
     </div>
   </template>
   <template id="template-cart-list">

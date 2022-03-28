@@ -25,12 +25,18 @@ export class Product extends Component {
     event() {
         document.addEventListener('DOMContentLoaded', () => {
             this.render();
+            let redigirCarrito = document.querySelectorAll('#redigirCarrito')
+            redigirCarrito.forEach(elemt =>{
+                elemt.addEventListener('click', (e) => {
+                    let carrito = document.querySelector('#app-cart-list')
+                    carrito.scrollIntoView({ behavior: 'smooth' })
+                })
+            })
         })
         this.root.addEventListener('click', (e) => {
             if (e.target.classList.contains('btn-buy')) {
                 this.createDataCart(e.target.parentNode);
                 this.Cart.render();
-                
             }
         })
     }
