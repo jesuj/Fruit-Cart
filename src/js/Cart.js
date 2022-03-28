@@ -41,6 +41,11 @@ export class Cart extends Component {
                 this.render();
             }
         })
+        let btnClear = document.querySelector('#btn-clear')
+        btnClear.addEventListener('click', (_)=>{
+            this.root.innerHTML='';
+            CartState.remove();
+        })
     }
 }
 

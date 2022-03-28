@@ -55,6 +55,10 @@ class State {
     saveLocalStorage(){
         localStorage.setItem(this.KEY, JSON.stringify(this.cart))
     }
+    remove(){
+        this.cart = {};
+        this.saveLocalStorage();
+    }
 }
 
 export default State.getInstance();
